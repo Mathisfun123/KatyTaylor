@@ -1,10 +1,13 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class Convergeto1 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		HashMap<Integer, ArrayList<Integer>> values = new HashMap<>();
 		 for(int i = 2; i< 1000; i++ ){
 		 	int n = i; int ans= 0;
@@ -27,10 +30,11 @@ public class Convergeto1 {
 		 }
 		Set<Integer> elements = values.keySet();
 		 TreeSet<Integer> items = new TreeSet<>(elements);
-		 for (int i: items){
-			 System.out.println("Steps: "+ i + " " + values.get(i));
+		PrintWriter out = new PrintWriter(new File("covergeto1.out"));
+		 for (int i: items) {
+			 out.println("Steps: " + i + " " + values.get(i));
 		 }
-
+		 out.close();
 
 	}
 }
