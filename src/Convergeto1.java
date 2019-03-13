@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Convergeto1 {
+public class Convergeto1 { 
 	public static void main(String[] args) throws FileNotFoundException {
 		HashMap<Integer, ArrayList<Integer>> values = new HashMap<>();
 		 for(int i = 2; i< 1000; i++ ){
