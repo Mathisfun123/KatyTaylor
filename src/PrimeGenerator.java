@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collections; 
+import java.util.Collections;
 
 public class PrimeGenerator {
 	public static void main(String[] args) throws FileNotFoundException {
