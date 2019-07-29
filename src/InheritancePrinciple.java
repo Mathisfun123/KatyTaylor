@@ -1,4 +1,4 @@
-public class InheritancePrinciple {
+class InheritancePrinciple {
     public static String LifeStyle(){
         return "doCompSci";
     }
@@ -9,3 +9,7 @@ public class InheritancePrinciple {
         return Double.toString(score) + amtTime;
     }
 }
+
+
+
+

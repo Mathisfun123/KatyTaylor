@@ -1,24 +1,96 @@
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.*;
+import javax.tools.Tool;
 
 import static java.lang.System.*;
 
-public class RandomWritten extends JFrame{
-    public static void main(String[] args) throws FileNotFoundException
-    {
-        ArrayList<Integer> items = new ArrayList<>();
-        items.add(2);
-        System.out.println(items.remove(new Integer(3)));
+public class RandomWritten extends JFrame {
+    public static void main(String[] args) throws FileNotFoundException {
+       ArrayList<Integer> arrayList= new ArrayList<>();
+
+
+
+
 
 
     }
-     public static int recursion(int a, int b){
+    public static void AttemptAtAcronymGen(){
+        String arr[] = {"i","a","e","p","s","s","m"};
+        int count = 1;
+        int[] rem = countLowerCaseLetters(arr);
+        HashMap<String, int[]> linkToLettersRemaining= new HashMap<>();
+        for(int i = 97; i< 97+26; i++){
+            if(rem[i-97]>0) {
+                int arr2[] = rem.clone();
+                arr2[i-97]--;
+                linkToLettersRemaining.put((char)(i)+"", arr2);
+            }
+        }
+        ArrayList<String> stringtoRemove = new ArrayList<>();
+        for (String next : linkToLettersRemaining.keySet()) {
+            int []rem2 = linkToLettersRemaining.get(next);
+            for(int i = 97; i< 97+26; i++){
+                if(rem[i-97]>0) {
+                    int[] arr2 = rem2.clone();
+                    arr2[i-97]--;
+                    linkToLettersRemaining.put(next+i, arr2);
+                }
+            }
+            stringtoRemove.add(next);
+        }
+        for(String i: stringtoRemove){
+            linkToLettersRemaining.remove(i);
+        }
+        for(String p: linkToLettersRemaining.keySet()){
+            out.print(p);
+            int rem2[] = linkToLettersRemaining.get(p);
+            for (int i = 0; i < rem2.length; i++) {
+                int i1 = rem2[i];
+                out.print(" "+ i1);
+            }
+            out.println();
+        }
+    }
+    public static int[] countLowerCaseLetters(String arr[]){
+        int carr[] = new int[26];
+        for (String s : arr) {
+            carr[(int) (s.charAt(0)) - 97]++;
+        }
+        return carr;
+    }
+    private void CalendarIdeas(){
+        Calendar t = Calendar.getInstance();
+        t.set(2014, 1, 10); //1 will shift to 2 since data works with 1 beginning
+        Date o = t.getTime();
+        String output = new SimpleDateFormat("MMMM-dd-YYYY EEEE").format(o);
+        out.println(output);
+    }
+    public static ArrayList<Integer> elementsAfter(String s, int t ){
+        String t1[] = s.split(" ");
+        int elem [] = new int[t1.length];
+        int index = -1;
+        for (int i = 0; i < t1.length; i++) {
+            elem[i]= Integer.parseInt(t1[i]);
+            if(elem[i] == t){
+                index=i;
+            }
+        }
+
+        ArrayList<Integer> vals = new ArrayList<>();
+        for(int i = index+1; i< elem.length; i++){
+            vals.add(elem[i]);
+        }
+        return vals;
+    }
+     private static int recursion(int a, int b){
         if(a== 0 || b ==0 ){
             return a+b;
         }else{
@@ -38,7 +110,6 @@ public class RandomWritten extends JFrame{
         return ans;
 
     }
-
     public static void Decimal() {
         DecimalFormat format = new DecimalFormat("000");
         StringBuilder item = new StringBuilder();
@@ -59,13 +130,13 @@ public class RandomWritten extends JFrame{
         for (int i = 0; i < origmaze.length; i++) {
             int[] ints = origmaze[i];
             for (int j = 0; j < ints.length; j++) {
-                newmaze[ints.length- (j+1)][i]= origmaze[i][j];
+                newmaze[i][ints.length- (j+1)]= origmaze[i][j];
 
             }
         }
         for (int[] ints : newmaze) {
             for (int anInt : ints) {
-                System.out.print(anInt+" ");
+                System.out.print(anInt);
             }
             System.out.println();
         }
@@ -82,8 +153,8 @@ public class RandomWritten extends JFrame{
         return val1* val2/ gcf(val1,val2);
     }
     static class Person implements  Comparable{
-        public int age;
-        public String name;
+        int age;
+        String name;
 
         public Person(int age, String name) {
             this.age = age;
