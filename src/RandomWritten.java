@@ -14,10 +14,8 @@ import static java.lang.System.*;
 
 public class RandomWritten extends JFrame {
     public static void main(String[] args) throws FileNotFoundException {
-       ArrayList<Integer> arrayList= new ArrayList<>();
-
-
-
+        out.println("Ea".hashCode());
+        out.println("FB".hashCode());
 
 
 
