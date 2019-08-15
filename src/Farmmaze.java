@@ -7,14 +7,15 @@ import java.util.TreeMap;
 
 public class Farmmaze {
     public static void main(String[] args) throws FileNotFoundException {
-        TreeMap<Integer, ArrayList<String>> masterySet = new TreeMap<>();
+        TreeMap<Integer, String> masterySet = new TreeMap<>();
         Scanner sc = new Scanner(new File("farmmaze.in"));
         while(sc.hasNextLine()){
-            ArrayList<String>  tempSet = masterySet.remove(0);
-            tempSet.add(sc.nextLine());
-            masterySet.put(0, tempSet);
+            String ln = sc.nextLine();
+            int year = Integer.parseInt(ln.split(" ")[0]);
+            masterySet.put(year, ln.substring(ln.indexOf(" ") +1));
         }
         System.out.println(masterySet);
+
 
     }
 }

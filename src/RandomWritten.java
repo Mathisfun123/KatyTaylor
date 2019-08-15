@@ -14,8 +14,8 @@ import static java.lang.System.*;
 
 public class RandomWritten extends JFrame {
     public static void main(String[] args) throws FileNotFoundException {
-        out.println("Ea".hashCode());
-        out.println("FB".hashCode());
+        int year = Integer.parseInt("1525 Bruegel liked".split(" ")[0]);
+        out.println(year);
 
 
 
