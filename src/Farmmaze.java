@@ -10,7 +10,7 @@ public class Farmmaze {
         TreeMap<Integer, String> masterySet = new TreeMap<>();
         Scanner sc = new Scanner(new File("farmmaze.in"));
         while(sc.hasNextLine()){
-            String ln = sc.nextLine();
+            String ln = sc.nextLine(); 
             int year = Integer.parseInt(ln.split(" ")[0]);
             masterySet.put(year, ln.substring(ln.indexOf(" ") +1));
         }
