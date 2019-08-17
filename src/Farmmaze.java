@@ -1,29 +1,21 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Farmmaze {
     public static void main(String[] args) throws FileNotFoundException {
-        TreeMap<Integer, ArrayList<Fact>> masterySet = new TreeMap<>();        // First Number in TreeMap is equal to exposure
+        TreeSet<Fact> masterySet = new TreeSet<>();        // First Number in TreeMap is equal to exposure
         Scanner sc = new Scanner(new File("farmmaze.in"));
         while(sc.hasNextLine()){
             String ln = sc.nextLine();
-            if(!masterySet.containsKey(0)){
-                ArrayList<Fact> t = new ArrayList<>(); t.add(new Fact(ln));
-                masterySet.put(0, t);
-            }else{
-                ArrayList<Fact> t = masterySet.get(0); t.add(new Fact(ln));
-                masterySet.put(0,t);
-            }
+            masterySet.add(new Fact(ln));
 
         } //load data into TreeMap with all of them being added to 0 key ArrayList
         System.out.println(masterySet);
 
         QuizTime(masterySet);
     }
+
     private static void QuizTime(TreeMap<Integer, ArrayList<Fact>> masterySet) {
         Scanner sc2 = new Scanner(System.in);         //Scanner to take input from user
         for(int i = 0; i< 2; i++){
@@ -75,12 +67,7 @@ public class Farmmaze {
         public int compareTo(Object o) {
             //First Return Incorrect (Exposure-Correct)
             Fact p =(Fact)o;
-            if(this.exposure-this.correct != (p.exposure-p.correct)){
-                return (this.exposure- this.correct)- (p.exposure-p.correct);
-            }else{
-                //If needed return exposure only --> Nothing to do if they both get it wrong same times: maybe compare number correct
-                return this.exposure- p.exposure;
-            }
+            return (int)((this.correct/(double)(this.exposure))- (p.correct/(double)(p.exposure)));
         }
     }
 
