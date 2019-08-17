@@ -39,7 +39,7 @@ public class Farmmaze {
                 attemptTime.exposure++;
             } //user attempts to guess year: if correct get correct also incremented
 
-            //adding elements back to TreeMap (with updated exposure for attemptTime)
+            //adding elements back to TreeMap
             if(t.getValue().size()>0) {
                 masterySet.put(t.getValue().get(0).exposure, t.getValue());
             } // if t still has other elements --> can use other element's exposure
