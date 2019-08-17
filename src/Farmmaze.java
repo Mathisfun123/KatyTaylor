@@ -16,32 +16,19 @@ public class Farmmaze {
         QuizTime(masterySet);
     }
 
-    private static void QuizTime(TreeMap<Integer, ArrayList<Fact>> masterySet) {
+    private static void QuizTime(TreeSet<Fact> masterySet) {
         Scanner sc2 = new Scanner(System.in);         //Scanner to take input from user
         for(int i = 0; i< 2; i++){
-            Map.Entry<Integer, ArrayList<Fact>> t = masterySet.pollFirstEntry(); // Get's the lowest exposure
+            Fact t = masterySet.pollFirst(); // Get's the lowest exposure
 
-            //modify only the first ArrayList Fact event
-            Fact attemptTime = t.getValue().remove(0); //modify the first element (in the first exposure level)
-            System.out.println(attemptTime.fact);
-            if(Integer.parseInt(sc2.nextLine())== (attemptTime.year)){
-                attemptTime.correct++;
-                attemptTime.exposure++;
+            System.out.println(t.fact);
+            if(Integer.parseInt(sc2.nextLine())== (t.year)){
+                t.correct++;
+                t.exposure++;
             }else{
-                attemptTime.exposure++;
+                t.exposure++;
             } //user attempts to guess year: if correct get correct also incremented
-
-            //adding elements back to TreeMap
-            if(t.getValue().size()>0) {
-                masterySet.put(t.getValue().get(0).exposure, t.getValue());
-            } // if t still has other elements --> can use other element's exposure
-            if(!masterySet.containsKey(attemptTime.exposure)){
-                ArrayList<Fact> s = new ArrayList<>(); s.add(attemptTime);
-                masterySet.put(attemptTime.exposure, s);
-            }else {
-                ArrayList<Fact> s = masterySet.get(attemptTime.exposure); s.add(attemptTime);
-                masterySet.put(attemptTime.exposure,s);
-            } //adding the updated Quiz Question
+            masterySet.add(t);
          }
         System.out.println(masterySet);
 
@@ -67,7 +54,7 @@ public class Farmmaze {
         public int compareTo(Object o) {
             //First Return Incorrect (Exposure-Correct)
             Fact p =(Fact)o;
-            return (int)((this.correct/(double)(this.exposure))- (p.correct/(double)(p.exposure)));
+            return (int)((this.correct/(double)(this.exposure))- (p.correct/(double)(p.exposure))) ;
         }
     }
 
