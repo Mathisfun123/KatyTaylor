@@ -14,8 +14,10 @@ import static java.lang.System.*;
 
 public class RandomWritten extends JFrame {
     public static void main(String[] args) throws FileNotFoundException {
-        int year = Integer.parseInt("1525 Bruegel liked".split(" ")[0]);
-        out.println(year);
+       Scanner sc = new Scanner(new File("farmmaze.in"));
+       while(sc.hasNextLine()){
+           out.println(sc.nextLine());
+       }
 
 
 
