@@ -24,41 +24,43 @@ public class Farmmaze {
 
         QuizTime(masterySet);
     }
-    public static void QuizTime (TreeMap<Integer, ArrayList<Fact>> masterySet){
+    private static void QuizTime(TreeMap<Integer, ArrayList<Fact>> masterySet){
         Scanner sc2 = new Scanner(System.in);         //Scanner to take input from user
         for(int i = 0; i< 2; i++){
-            Map.Entry<Integer, ArrayList<Fact>> t = masterySet.pollFirstEntry();
+            Map.Entry<Integer, ArrayList<Fact>> t = masterySet.pollFirstEntry(); // Get's the lowest exposure
+
             //modify only the first ArrayList Fact event
-            Fact attemptTime = t.getValue().remove(0);
+            Fact attemptTime = t.getValue().remove(0); //modify the first element (in the first exposure level)
             System.out.println(attemptTime.fact);
             if(Integer.parseInt(sc2.nextLine())== (attemptTime.year)){
                 attemptTime.correct++;
                 attemptTime.exposure++;
             }else{
                 attemptTime.exposure++;
-            }
+            } //user attempts to guess year: if correct get correct also incremented
+
             //adding elements back to TreeMap
             if(t.getValue().size()>0) {
                 masterySet.put(t.getValue().get(0).exposure, t.getValue());
-            }
+            } // if t still has other elements --> can use other element's exposure
             if(!masterySet.containsKey(attemptTime.exposure)){
                 ArrayList<Fact> s = new ArrayList<>(); s.add(attemptTime);
                 masterySet.put(attemptTime.exposure, s);
-            }else{
+            }else {
                 ArrayList<Fact> s = masterySet.get(attemptTime.exposure); s.add(attemptTime);
                 masterySet.put(attemptTime.exposure,s);
-            }
-        }
+            } //adding the updated Quiz Question
+         }
         System.out.println(masterySet);
 
 
     }
     public static class Fact {
-        public int year;
-        public int exposure;
-        public int correct;
-        public String fact;
-        public Fact(String s){
+        int year;
+        int exposure;
+        int correct;
+        String fact;
+        Fact(String s){
             year = Integer.parseInt(s.split(" ")[0]);
             fact = s.substring(s.indexOf(" ") +1);
             exposure= 0;
