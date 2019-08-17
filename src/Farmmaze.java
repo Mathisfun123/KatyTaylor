@@ -12,9 +12,10 @@ public class Farmmaze {
             String ln = sc.nextLine();
             masterySet.put(0, new Fact(ln));
         }
+        System.out.println(masterySet);
         // First Number in TreeMap is equal to exposure
         Scanner sc2 = new Scanner(System.in);
-        for(int i = 0; i< 10; i++){
+        for(int i = 0; i< 2; i++){
             Map.Entry<Integer, Fact> t = masterySet.pollFirstEntry();
             System.out.println(t.getValue().fact);
             if(Integer.parseInt(sc2.nextLine())== (t.getKey())){
