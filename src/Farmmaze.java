@@ -24,7 +24,7 @@ public class Farmmaze {
 
         QuizTime(masterySet);
     }
-    private static void QuizTime(TreeMap<Integer, ArrayList<Fact>> masterySet){
+    private static void QuizTime(TreeMap<Integer, ArrayList<Fact>> masterySet) {
         Scanner sc2 = new Scanner(System.in);         //Scanner to take input from user
         for(int i = 0; i< 2; i++){
             Map.Entry<Integer, ArrayList<Fact>> t = masterySet.pollFirstEntry(); // Get's the lowest exposure
@@ -55,7 +55,7 @@ public class Farmmaze {
 
 
     }
-    public static class Fact {
+    public static class Fact implements Comparable{
         int year;
         int exposure;
         int correct;
@@ -69,6 +69,18 @@ public class Farmmaze {
         @Override
         public String toString() {
             return year+ " " + fact;
+        }
+
+        @Override
+        public int compareTo(Object o) {
+            //First Return Incorrect (Exposure-Correct)
+            Fact p =(Fact)o;
+            if(this.exposure-this.correct != (p.exposure-p.correct)){
+                return (this.exposure- this.correct)- (p.exposure-p.correct);
+            }else{
+                //If needed return exposure only --> Nothing to do if they both get it wrong same times: maybe compare number correct
+                return this.exposure- p.exposure;
+            }
         }
     }
 
