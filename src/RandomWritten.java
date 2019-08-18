@@ -3,6 +3,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -13,15 +14,10 @@ import javax.tools.Tool;
 import static java.lang.System.*;
 
 public class RandomWritten extends JFrame {
-    public static void main(String[] args) throws FileNotFoundException {
-       Scanner sc = new Scanner(new File("farmmaze.in"));
-       while(sc.hasNextLine()){
-           out.println(sc.nextLine());
-       }
-
-
+    public static void main(String[] args) throws ParseException {
 
     }
+
     public static void AttemptAtAcronymGen(){
         String arr[] = {"i","a","e","p","s","s","m"};
         int count = 1;
