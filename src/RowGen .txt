@@ -1,0 +1,68 @@
+import java.applet.*;
+import java.awt.*;
+import java.util.ArrayList;
+
+public class Java0521 extends Applet{
+
+	public void paint (Graphics g){
+		reset(g);
+		for(int i = 0; i< 8; i++){
+			if(i==0){
+				drawRow(0,25,i,g);
+			}else{
+				drawRow(30, ((i+1)*50)-25, i, g);
+			}
+		}
+
+	}
+	public static void drawRow(int r, int c, int factor, Graphics g){
+		ArrayList<Integer> pointstillhitfirst = new ArrayList<>();
+		if(factor%2==0) {
+			for (int i = r; i < 370; i += 5) {
+				pointstillhitfirst.add(i);
+				while (pointstillhitfirst.size() > 10) {
+					pointstillhitfirst.remove(0);
+				}
+				g.setColor(Color.red);
+				g.drawLine(pointstillhitfirst.get(0), c, pointstillhitfirst.get(pointstillhitfirst.size() - 1), c);
+				delay();
+				reset(g);
+			}
+			delay();
+			g.setColor(Color.red);
+			g.drawLine(370, c, 370, c+50);
+		}else{
+			for(int i = 370; i>= c; i-=5){
+				pointstillhitfirst.add(i);
+				while(pointstillhitfirst.size()>10){
+					pointstillhitfirst.remove(0);
+				}
+				g.setColor(Color.red); g.drawLine(pointstillhitfirst.get(0),c,pointstillhitfirst.get(pointstillhitfirst.size()-1),c);
+				delay();
+				reset(g);
+			}
+			delay();
+			if(factor!=7) {
+				g.setColor(Color.red);
+				g.drawLine(30, c, 30, c+50);
+				pointstillhitfirst.clear();
+			}
+		}
+	}
+	public static void delay(){
+		try {
+			Thread.sleep(50);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void reset(Graphics g){
+		g.setColor(Color.white); g.fillRect(0,0,400,1600);
+		g.setColor(Color.black);
+		for(int p = 0; p< 400; p+=50){
+			for(int j = 0; j<400; j+=50) {
+				g.drawRect(p, j, 50, 50);
+			}
+		}
+	}
+}
