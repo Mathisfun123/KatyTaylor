@@ -18,6 +18,11 @@ public class RandomWritten extends JFrame {
         TreeSet<Apples> itms = new TreeSet<>();
         itms.add(new Apples("John")); itms.add(new Apples("Smith"));
         out.println(itms);
+        Apples m = itms.pollFirst();
+        m.x= 1; m.y=2;
+        itms.add(m);
+        out.println(itms);
+
     }
     static class Apples implements Comparable {
         int x;
@@ -35,7 +40,7 @@ public class RandomWritten extends JFrame {
 
         @Override
         public int compareTo(Object o) {
-            return (this.x)/(this.y)- ((Apples)(o)).x/((Apples)(o)).y;
+            return (this.x)/(this.y)- ((Apples)(o)).x/((Apples)(o)).y != 0? (this.x)/(this.y)- ((Apples)(o)).x/((Apples)(o)).y: 1  ;
         }
     }
 

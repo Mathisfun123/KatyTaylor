@@ -58,7 +58,7 @@ public class Farmmaze {
         public int compareTo(Object o) {
             //First Return Incorrect (Exposure-Correct)
             Fact p =(Fact)o;
-            return (int)((this.correct/(double)(this.exposure))- (p.correct/(double)(p.exposure))) != 0? (int)((this.correct/(double)(this.exposure))- (p.correct/(double)(p.exposure))): -1;
+            return (int)((this.correct/(double)(this.exposure))- (p.correct/(double)(p.exposure))) != 0? (int)((this.correct/(double)(this.exposure))- (p.correct/(double)(p.exposure))): 1; //1 means priority to what came first
         }
     }
 
