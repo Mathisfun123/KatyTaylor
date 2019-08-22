@@ -15,10 +15,30 @@ import static java.lang.System.*;
 
 public class RandomWritten extends JFrame {
     public static void main(String[] args) throws ParseException {
-        TreeSet<Double> itms = new TreeSet<>();
-        itms.add(2.0); itms.add(1.0);
+        TreeSet<Apples> itms = new TreeSet<>();
+        itms.add(new Apples("John")); itms.add(new Apples("Smith"));
         out.println(itms);
     }
+    static class Apples implements Comparable {
+        int x;
+        int y;
+        String name;
+        public Apples(String s){
+            x= 0; y=1;
+            name= s;
+        }
+
+        @Override
+        public String toString() {
+            return this.name;
+        }
+
+        @Override
+        public int compareTo(Object o) {
+            return (this.x)/(this.y)- ((Apples)(o)).x/((Apples)(o)).y;
+        }
+    }
+
 
     public static void AttemptAtAcronymGen(){
         String arr[] = {"i","a","e","p","s","s","m"};
