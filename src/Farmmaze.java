@@ -31,6 +31,10 @@ public class Farmmaze {
             masterySet.add(t);
          }
         System.out.println(masterySet);
+        for (Iterator<Fact> iterator = masterySet.iterator(); iterator.hasNext(); ) {
+            Fact next =  iterator.next();
+            System.out.println((next.correct/(double)(next.exposure)));
+        }
 
 
     }
