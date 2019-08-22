@@ -15,7 +15,9 @@ import static java.lang.System.*;
 
 public class RandomWritten extends JFrame {
     public static void main(String[] args) throws ParseException {
-
+        TreeSet<Double> itms = new TreeSet<>();
+        itms.add(2.0); itms.add(1.0);
+        out.println(itms);
     }
 
     public static void AttemptAtAcronymGen(){

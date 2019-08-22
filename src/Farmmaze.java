@@ -46,7 +46,7 @@ public class Farmmaze {
         Fact(String s){
             year = Integer.parseInt(s.split(" ")[0]);
             fact = s.substring(s.indexOf(" ") +1);
-            exposure= 0;
+            exposure= 1;
         }
 
         @Override
