@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.*;
@@ -15,16 +16,18 @@ import static java.lang.System.*;
 
 public class RandomWritten extends JFrame {
     public static void main(String[] args) throws ParseException {
-        TreeSet<Apples> itms = new TreeSet<>();
-        itms.add(new Apples("John")); itms.add(new Apples("Smith"));
-        out.println(itms);
-        Apples m = itms.pollFirst();
-        m.x= 1; m.y=2;
-        itms.add(m);
-        out.println(itms);
+		out.printf("%-5d",15);
+
+//        TreeSet<Apples> itms = new TreeSet<>();
+//        itms.add(new Apples("John")); itms.add(new Apples("Smith"));
+//        out.println(itms);
+//        Apples m = itms.pollFirst();
+//        m.x= 1; m.y=2;
+//        itms.add(m);
+//        out.println(itms);
 
     }
-    static class Apples implements Comparable {
+    static class Apples extends RandomWritten {
         int x;
         int y;
         String name;
@@ -33,12 +36,11 @@ public class RandomWritten extends JFrame {
             name= s;
         }
 
-        @Override
         public String toString() {
             return this.name;
         }
 
-        @Override
+
         public int compareTo(Object o) {
             return (this.x)/(this.y)- ((Apples)(o)).x/((Apples)(o)).y != 0? (this.x)/(this.y)- ((Apples)(o)).x/((Apples)(o)).y: 1  ;
         }
