@@ -4,21 +4,21 @@ import java.util.Scanner;
 
 public class Levenstein {
     public static int distance(String a, String b){
-        String initialtextfirst = a.toLowerCase(); String initialtextsecond= b.toLowerCase();
-        int [] costs= new int[initialtextsecond.length()+1];
+        a= a.toLowerCase(); b = b.toLowerCase();
+        int [] costs= new int[b.length()+1];
         for(int i = 0; i< costs.length;i++){
             costs[i]= i;
         }
-        for(int i = 1; i<= initialtextfirst.length(); i++){
+        for(int i = 1; i<= a.length(); i++){
             costs[0]= i;
             int nw = i-1;
-            for(int j = 1; j<= initialtextsecond.length();j++){
+            for(int j = 1; j<= b.length();j++){
                 int cj = Math.min(1+Math.min(costs[j],costs[j-1]),a.charAt(i-1)==b.charAt(j-1)? nw : nw+1);
                 nw = costs[j];
                 costs[j]= cj;
             }
         }
-        return costs[initialtextsecond.length()];
+        return costs[b.length()];
     }
 
     public static void main(String[] args) {
